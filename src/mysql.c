@@ -139,7 +139,7 @@ _nss_mysql_set_options (sql_server_t *server)
 {
   DN ("_nss_mysql_set_options")
   const unsigned int def_timeout = DEF_TIMEOUT;
-  const my_bool reconnect = 1;
+  const bool reconnect = 1;
 
   DENTER
 
@@ -149,7 +149,7 @@ _nss_mysql_set_options (sql_server_t *server)
 #if MYSQL_VERSION_ID >= 50013
   mysql_options(&ci.link, MYSQL_OPT_RECONNECT, (const char *) &reconnect);
 #else
-  ci.link.reconnect = (my_bool) 1;
+  ci.link.reconnect = (bool) 1;
 #endif
 
   DEXIT
